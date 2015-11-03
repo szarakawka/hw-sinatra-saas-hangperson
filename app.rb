@@ -64,11 +64,19 @@ class HangpersonApp < Sinatra::Base
   
   get '/win' do
     ### YOUR CODE HERE ###
+    unless @game.check_win_or_lose == :win
+      flash[:message] = "Don't cheat!"
+      redirect '/show'
+    end
     erb :win # You may change/remove this line
   end
   
   get '/lose' do
     ### YOUR CODE HERE ###
+    unless @game.check_win_or_lose == :lose
+      flash[:message] = "Don't cheat!"
+      redirect '/show'
+    end
     erb :lose # You may change/remove this line
   end
   
